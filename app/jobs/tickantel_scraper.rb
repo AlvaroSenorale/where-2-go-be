@@ -57,8 +57,12 @@ class TickantelScraper
   end
 
   def show_prices(panel)
-    panel.search('.text-right').map do |price|
-      price.text[1..-1].to_i * 100
+    price_array = panel.search('.text-right').map(&:text).select do |price|
+      price.include?('$')
+    end
+
+    price_array.map do |price|
+      price[1..-1].to_i
     end
   end
 
