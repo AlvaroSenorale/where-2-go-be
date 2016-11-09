@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title WhereToGo
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .col-md-12.centered
+      .col-md-6.change-tab-button
+        = link_to "Movie Center", movie_center_index_path, :class => "btn btn-success source-btn"
+      .col-md-6.change-tab-button
+        = link_to "Tickantel", tickantel_index_path, :class => "btn btn-success source-btn"
+    = yield

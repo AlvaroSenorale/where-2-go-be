@@ -1,0 +1,42 @@
+%h1.col-md-12.source-title
+  TICKANTEL
+.col-md-12.index-table-column
+  %h2 Music
+  %table.table-striped.table
+    %thead
+      %tr
+        %th title
+        %th synopsis
+        %th pleace
+        %th poster_url
+    %tbody
+      - @music.each do |m|
+        %tr
+          %th
+            = m.title
+          %th
+            = m.synopsis[0..300] + '...'
+          %th
+            = m.place
+          %th
+            = image_tag 'http://' + m.poster_url, class: 'poster-img'
+.col-md-12.index-table-column
+  %h2 Teatro
+  %table.table-striped.table
+    %thead
+      %tr
+        %th title
+        %th synopsis
+        %th pleace
+        %th poster_url
+    %tbody
+      - @theater.each do |thea|
+        %tr
+          %th
+            = thea.title
+          %th
+            = thea.synopsis[0..300] + '...'
+          %th
+            = thea.place
+          %th
+            = image_tag 'http://' + thea.poster_url, class: 'poster-img'

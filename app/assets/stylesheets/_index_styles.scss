@@ -1,0 +1,22 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.source-title {
+  text-align: center;
+}
+
+.index-table-column {
+  text-align: center;
+  margin-top: 44px;
+
+  th {
+    text-align: center;
+    .poster-img {
+      max-width: 100px;
+    }
+  }
+}
+
+.centered {
+  text-align: center;
+}

@@ -25,6 +25,10 @@ gem 'will_paginate_mongoid', '2.0.1'
 # Web scrapper
 gem 'mechanize', '2.7.5'
 
+gem 'haml', '4.0.7'
+
+gem 'bootstrap-sass', '3.3.6'
+
 group :development, :test do
   gem 'pry-rails',   '0.3.4'
   gem 'pry-rescue',  '1.4.2'
