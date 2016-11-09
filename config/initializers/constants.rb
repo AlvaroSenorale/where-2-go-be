@@ -12,3 +12,4 @@ THEATER_SHOWS_ENPOINT = 'https://api.movie.com.uy/api/shows/theater/scheduledSho
 # TICKANTEL
 TICKANTEL = 'http://tickantel.com.uy/inicio/'
 TICKANTEL_THEATER_URL = TICKANTEL + 'buscarTeatro'
+TICKANTEL_MUSIC_URL = TICKANTEL + 'buscarMusica'

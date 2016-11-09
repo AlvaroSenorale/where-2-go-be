@@ -1,15 +1,25 @@
 class TickantelScraper
   def process
     process_theater
+    process_music
   end
 
   private
+
+  def process_music
+    data = agent.get(TICKANTEL_MUSIC_URL)
+    paths = data.search('.block-grid-item a')
+    paths.each do |path|
+      path_data = agent.get(TICKANTEL + path['href'])
+      process_function(path_data, 2)
+    end
+  end
 
   def process_theater
     data = agent.get(TICKANTEL_THEATER_URL)
     paths = data.search('.block-grid-item a')
     paths.each do |path|
-      path_data = agent.get(TICKANTEL + path['href'])
+      path_data = agent.get(  TICKANTEL + path['href'])
       process_function(path_data, 1)
     end
   end
@@ -79,7 +89,7 @@ class TickantelScraper
   end
 
   def get_place(panel)
-    panel.search('.place span')[2..-1].map(&:text).join(' - ')
+    panel.search('.place span')[2..-1].map(&:text).join(' - ') if panel
   end
 
   def get_banner(data)

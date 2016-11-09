@@ -1,0 +1,54 @@
+%h1.col-md-12.source-title
+  MOVIECENTER
+.col-md-12.index-table-column
+  %h2 Movies
+  %table.table-striped.table
+    %thead
+      %tr
+        %th title
+        %th duration
+        %th synopsis
+        %th genre
+        %th poster_url
+        %th rating
+    %tbody
+      - @movies.each do |movie|
+        %tr
+          %th
+            = movie.title
+          %th
+            = movie.duration
+          %th
+            = movie.synopsis[0..300].gsub(/\s\w+\s*$/,'...')
+          %th
+            = movie.genre
+          %th
+            = image_tag movie.poster_url, class: 'poster-img'
+          %th
+            = movie.rating
+.col-md-12.index-table-column
+  %h2 Teatro
+  %table.table-striped.table
+    %thead
+      %tr
+        %th title
+        %th duration
+        %th synopsis
+        %th genre
+        %th poster_url
+        %th rating
+    %tbody
+      - @theater.each do |thea|
+        %tr
+          %th
+            = thea.title
+          %th
+            = thea.duration
+          %th
+            = thea.synopsis[0..300].gsub(/\s\w+\s*$/,'...')
+          %th
+            = thea.genre
+          %th
+            = image_tag thea.poster_url, class: 'poster-img'
+          %th
+            = thea.rating
