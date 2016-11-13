@@ -19,7 +19,7 @@ class TickantelScraper
     data = agent.get(TICKANTEL_THEATER_URL)
     paths = data.search('.block-grid-item a')
     paths.each do |path|
-      path_data = agent.get(  TICKANTEL + path['href'])
+      path_data = agent.get( TICKANTEL + path['href'])
       process_function(path_data, 1)
     end
   end
@@ -30,7 +30,6 @@ class TickantelScraper
 
   def process_function(data, type)
     function = create_function(data, type)
-
     shows_data(data).each do |show|
       create_tick_antel_show(show, function)
     end
@@ -50,13 +49,14 @@ class TickantelScraper
   def create_tick_antel_show(show, function)
     show_data = agent.click(show.search('.link').last)
     
-    date = show_data.search('.date').text
-    day = Time.zone.parse(date)
-    hour = get_hour(show_data).to_i
-    minutes = get_minutes(show_data).to_i
+    date = convert_date_to_english(show.search('.date').text)
     
-    min_price = show_prices(show_data).min
-    max_price = show_prices(show_data).max
+    day = Time.zone.parse(date)
+    hour = get_hour(show).to_i
+    minutes = get_minutes(show).to_i
+    
+    min_price = show_prices(show).min
+    max_price = show_prices(show).max
 
     TickAntelShow.create(tick_antel_entity: function,
                          day: day,
@@ -66,8 +66,15 @@ class TickantelScraper
                          min_price: min_price)
   end
 
-  def show_prices(panel)
-    price_array = panel.search('.text-right').map(&:text).select do |price|
+  def convert_date_to_english(date)
+    MONTH_MAPPING.each do |m|
+      date.gsub!(m[0],m[1])
+    end
+    date
+  end
+
+  def show_prices(show)
+    price_array = show.parent.search('.text-right').map(&:text).select do |price|
       price.include?('$')
     end
 

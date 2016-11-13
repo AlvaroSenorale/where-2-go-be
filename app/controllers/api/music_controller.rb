@@ -14,6 +14,20 @@ class Api::MusicController < Api::BaseController
   end
 
   def collection
-    @collection ||= TickAntelEntity.where(entity_type: 2).all
+    @collection ||= TickAntelEntity.filtered(query, 2).includes(:tick_antel_shows, with: filtered_antel_shows)
+  end
+
+  def filtered_antel_shows
+    ->(as) { as.where(ransack_query) }
+  end
+
+  def query
+    params[:q]
+  end
+
+  def ransack_query
+    return {} unless query
+
+    RansackMongo::Query.parse(query)
   end
 end

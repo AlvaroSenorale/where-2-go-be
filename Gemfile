@@ -29,7 +29,9 @@ gem 'haml', '4.0.7'
 
 gem 'bootstrap-sass', '3.3.6'
 
-gem 'resourcerer'
+gem 'resourcerer', '1.0.0'
+
+gem 'ransack_mongo', ' 1.0.1'
 
 group :development, :test do
   gem 'pry-rails',   '0.3.4'
