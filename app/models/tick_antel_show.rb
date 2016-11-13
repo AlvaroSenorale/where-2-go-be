@@ -7,6 +7,10 @@ class TickAntelShow
   field :hour, type: Integer
   field :minutes, type: Integer
 
+  field :place, type: String
+  field :long, type: Float
+  field :lat, type: Float
+
   field :max_price, type: String
   field :min_price, type: String
 

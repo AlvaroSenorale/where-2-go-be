@@ -42,8 +42,7 @@ class TickantelScraper
     banner = get_banner(data) 
     banner.slice!(0)
     banner.slice!(0)
-    place = get_place(shows_data(data).last)
-    TickAntelEntity.create(title: title, synopsis: synop, poster_url: banner, place: place, entity_type: type)
+    TickAntelEntity.create(title: title, synopsis: synop, poster_url: banner, entity_type: type)
   end
 
   def create_tick_antel_show(show, function)
@@ -58,12 +57,18 @@ class TickantelScraper
     min_price = show_prices(show).min
     max_price = show_prices(show).max
 
+    place = get_place(show)
+    coord = get_coord(place)
+    
     TickAntelShow.create(tick_antel_entity: function,
                          day: day,
                          hour: hour,
                          minutes: minutes,
                          max_price: max_price,
-                         min_price: min_price)
+                         min_price: min_price,
+                         lat: coord[:lat],
+                         long: coord[:long],
+                         place: place)
   end
 
   def convert_date_to_english(date)
@@ -71,6 +76,44 @@ class TickantelScraper
       date.gsub!(m[0],m[1])
     end
     date
+  end
+
+  def get_coord(place)
+    case place
+    when /Sala Verdi/
+        VERDI_COORDS
+    when /Teatro Solís/
+        SOLIS_COORDS
+    when /Teatro El Galpón/
+        GALPON_COORDS
+    when /Auditorio Nacional/
+        AUDITORIO_NAC_COORDS
+    when /Centro Cultural Florencio Sánchez/
+        FLORENCIO_COORDS
+    when /Sala Camacuá/
+        CAMACUA_COORDS
+    when /Sala Zitarrosa/
+        ZITARROSA_COORDS
+    when /Auditorio Nelly Goitiño/
+        AUDITORIO_NELLY_COORDS
+    when /Teatro Agadu/
+        AGADU_COORDS
+    when /Bluzz Live/
+        BLUZZ_COORDS
+    when /Velódromo Municipal/
+        VELODROMO_COORDS
+    when /Centro Social Tala/
+        TALA_COORDS
+    when /Museo del Carnaval/
+        CARNAVAL_COORDS
+
+    when /Teatro del Anglo/
+        ANGLO_COORDS
+    when /Teatro Municipal Lavalleja/
+        LAVALLEJA_COORDS
+    else
+      {}
+    end
   end
 
   def show_prices(show)
