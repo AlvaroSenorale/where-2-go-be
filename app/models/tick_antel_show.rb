@@ -2,7 +2,7 @@ class TickAntelShow
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :day, type: Date
+  field :day, type: Date # to filter, año-mes-dia (ej: 2016-11-24 )
 
   field :hour, type: Integer
   field :minutes, type: Integer

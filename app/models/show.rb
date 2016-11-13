@@ -4,7 +4,7 @@ class Show
 
   field :session_id, type: String
   field :cinema_name, type: String
-  field :date, type: Date
+  field :date, type: Date # to filter año-mes-dia
   field :date_to_display, type: String
   field :time_to_display, type: String
   field :format, type: Integer # 2 = 2D , 3 = 3D
