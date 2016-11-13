@@ -3,7 +3,6 @@ class Api::IndexAntelSerializer < Api::BaseSerializer
   attributes(
     :title,
     :synopsis,
-    :place,
     :poster_url
   )
   

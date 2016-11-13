@@ -11,7 +11,7 @@ class Api::IndexMoviesSerializer < Api::BaseSerializer
     :directors,
     :rating_description,
     :rating,
-    :entity_type
+    :entity_type,
   )
   
   has_many :shows, serializer: Api::MovieShowSerializer

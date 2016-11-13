@@ -11,6 +11,16 @@ class Api::MovieShowSerializer < Api::BaseSerializer
     :translation,
     :screen_name,
     :screen_number,
-    :price_cents
+    :price_cents,
+    :lat,
+    :long
   )
+
+  def lat
+    object.cinema_shows.cinema.lat
+  end
+
+  def long
+    object.cinema_shows.cinema.long
+  end
 end

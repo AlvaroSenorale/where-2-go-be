@@ -10,10 +10,10 @@ module MovieHelper
     end
     
     def create_default_cinemas
-      Cinema.create(cinema_name: 'Movie Montevideo', _id: '001')
-      Cinema.create(cinema_name: 'Movie Portones', _id: '002')
-      Cinema.create(cinema_name: 'Movie Punta Carretas', _id: '003')
-      Cinema.create(cinema_name: 'Movie Nuevocentro', _id: '005')
+      Cinema.create(cinema_name: 'Movie Montevideo', _id: '001', lat: -34.9031313,long: -56.1362575)
+      Cinema.create(cinema_name: 'Movie Portones', _id: '002', lat: -34.8811386, long: -56.08134230000002)
+      Cinema.create(cinema_name: 'Movie Punta Carretas', _id: '003', lat: -34.92317620541964, long: -56.15856885910034)
+      Cinema.create(cinema_name: 'Movie Nuevocentro', _id: '005', lat: -34.8779285, long: -56.156256799999994)
     end
 
     def store_entities(items, type)
