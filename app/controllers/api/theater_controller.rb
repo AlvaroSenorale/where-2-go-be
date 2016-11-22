@@ -6,11 +6,11 @@ class Api::TheaterController < Api::BaseController
   private
 
   def render_collection
-    render json: theater_collection_json, serializer: index_resource_serializer, root: false
+    render json: collection + movie_collection, each_serializer: index_resource_serializer, root: false
   end
 
   def index_resource_serializer
-    Api::IndexTheaterSerializer
+    Api::IndexAntelSerializer #Api::IndexTheaterSerializer
   end
 
   def theater_collection_json
@@ -18,7 +18,7 @@ class Api::TheaterController < Api::BaseController
   end
 
   def collection
-    @collection ||= TickAntelEntity.filtered(antel_query, 1).includes(:tick_antel_shows, with: filtered_antel_shows)
+    @collection ||= TickAntelEntity.filtered(antel_query, 1).includes(:shows, with: filtered_antel_shows)
   end
 
   def movie_collection

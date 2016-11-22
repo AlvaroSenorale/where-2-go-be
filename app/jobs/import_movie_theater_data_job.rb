@@ -39,6 +39,9 @@ class ImportMovieTheaterDataJob
     uri.query = URI.encode_www_form({ cinemaId: show_data['cinemaId'], showId: show_data['sessionId'] })
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
+    unless data.is_a?(Array)
+      binding.pry
+    end
     if data.last
       { max: data.last['normalTicketTypePriceInCents'],
         min: data.last['unitPrice'] }

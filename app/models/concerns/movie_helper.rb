@@ -55,7 +55,7 @@ module MovieHelper
       print '.'
       Show.create(_id: show_data['id'],
                   session_id: show_data['sessionId'],
-                  cinema_name: show_data['cinemaName'],
+                  place: show_data['cinemaName'],
                   date: show_data['date'],
                   date_to_display: show_data['dateToDisplay'],
                   time_to_display: show_data['timeToDisplay'],

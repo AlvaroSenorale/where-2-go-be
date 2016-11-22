@@ -14,7 +14,7 @@ class Api::MusicController < Api::BaseController
   end
 
   def collection
-    @collection ||= TickAntelEntity.filtered(query, 2).includes(:tick_antel_shows, with: filtered_antel_shows)
+    @collection ||= TickAntelEntity.filtered(query, 2).includes(:shows, with: filtered_antel_shows)
   end
 
   def filtered_antel_shows

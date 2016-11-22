@@ -1,10 +1,11 @@
 class Api::TickAntelShowSerializer < Api::BaseSerializer
   attributes(
-    :day,
+    :date,
     :hour,
     :minutes,
-    :max_price,
-    :min_price,
+    :max_price_cents,
+    :min_price_cents,
+    :price_cents,
     :place,
     :lat,
     :long

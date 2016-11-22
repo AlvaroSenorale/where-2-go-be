@@ -2,7 +2,7 @@
 class Api::MovieShowSerializer < Api::BaseSerializer
   attributes(
     :session_id,
-    :cinema_name,
+    :place,
     :date,
     :date_to_display,
     :time_to_display,

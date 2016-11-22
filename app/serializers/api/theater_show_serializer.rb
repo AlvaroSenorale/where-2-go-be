@@ -2,16 +2,15 @@
 class Api::TheaterShowSerializer < Api::BaseSerializer
   attributes(
 	:session_id,
-	:cinema_name,
+	:place,
 	:date,
-	:date_to_display,
-	:time_to_display,
-	:format,
-	:format_lang,
-	:translation,
-	:screen_name,
-	:screen_number,
+	:price_cents,
 	:max_price_cents,
-	:min_price_cents
+	:min_price_cents,
+	:hour,
+	:minutes,
+	:time_to_display,
+	:long,
+	:lat
   )
 end
