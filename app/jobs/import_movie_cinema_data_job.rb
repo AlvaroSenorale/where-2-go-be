@@ -41,6 +41,9 @@ class ImportMovieCinemaDataJob
     uri.query = URI.encode_www_form({ cinemaId: cinema_id, showId: show_id })
     response = Net::HTTP.get(uri)
     data = JSON.parse(response)
+    unless data.is_a?(Array)
+      binding.pry
+    end
     data.last['normalTicketTypePriceInCents']
   end
 end

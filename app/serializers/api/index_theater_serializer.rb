@@ -14,6 +14,6 @@ class Api::IndexTheaterSerializer < Api::BaseSerializer
   end
 
   def collection_serializer(obj, serializer)
-    ActiveModel::ArraySerializer.new(obj, each_serializer: serializer)
+    ActiveModel::ArraySerializer.new(obj, each_serializer: serializer, root: false)
   end
 end

@@ -6,5 +6,5 @@ class Api::IndexAntelSerializer < Api::BaseSerializer
     :poster_url
   )
   
-  has_many :tick_antel_shows, serializer: Api::TickAntelShowSerializer
+  has_many :shows, serializer: Api::TickAntelShowSerializer
 end

@@ -42,7 +42,7 @@ class TickantelScraper
     banner = get_banner(data) 
     banner.slice!(0)
     banner.slice!(0)
-    TickAntelEntity.create(title: title, synopsis: synop, poster_url: banner, entity_type: type)
+    TickAntelEntity.create(title: title, synopsis: synop, poster_url: 'http://' + banner, entity_type: type)
   end
 
   def create_tick_antel_show(show, function)
@@ -53,6 +53,7 @@ class TickantelScraper
     day = Time.zone.parse(date)
     hour = get_hour(show).to_i
     minutes = get_minutes(show).to_i
+    time_to_display = get_hour(show) + ':' + get_minutes(show)
     
     min_price = show_prices(show).min
     max_price = show_prices(show).max
@@ -60,12 +61,14 @@ class TickantelScraper
     place = get_place(show)
     coord = get_coord(place)
     
-    TickAntelShow.create(tick_antel_entity: function,
-                         day: day,
+    Show.create(tick_antel_entity: function,
+                         date: day,
                          hour: hour,
                          minutes: minutes,
-                         max_price: max_price,
-                         min_price: min_price,
+                         time_to_display: time_to_display,
+                         max_price_cents: max_price,
+                         min_price_cents: min_price,
+                         price_cents: max_price,
                          lat: coord[:lat],
                          long: coord[:long],
                          place: place)
