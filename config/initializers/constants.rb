@@ -45,3 +45,13 @@ TALA_COORDS = { lat: -34.3437107, long: -55.763458000000014 }
 CARNAVAL_COORDS = { lat: -34.9057284, long: -56.21217410000003 }
 LAVALLEJA_COORDS = { lat: -34.3741805, long: -55.237645799999996 }
 ANGLO_COORDS = { lat: -34.90655600000001, long: -56.18489679999999 }
+
+EN_1 = ['Monday','Lunes']
+FE_1 = ['Tuesday','Martes']
+MA_1 = ['Wednesday','Miércoles']
+AB_1 = ['Thursday','Jueves']
+JUN_1 = ['Friday','Viernes']
+JUL_1 = ['Saturday','Sábado']
+AG_1 = ['Sunday','Domingo']
+
+DAYS_MAPPING = [EN_1,FE_1,MA_1,AB_1,MA_1,JUN_1,JUL_1,AG_1]

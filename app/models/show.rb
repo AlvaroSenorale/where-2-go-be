@@ -36,8 +36,22 @@ class Show
   before_save :update_movies_location
 
   before_save :parse_time
+
+  before_save :parse_date
   
   private
+
+  def parse_date
+    return true unless date
+    self.date_to_display = convert_days_to_spanish(date.to_time.strftime('%A, %b %d - %Y'))
+  end
+
+  def convert_days_to_spanish(date)
+    DAYS_MAPPING.each do |m|
+      date.gsub!(m[0],m[1])
+    end
+    date
+  end
 
   def parse_time
     return true unless !time_to_display.blank? && !hour && !minutes
