@@ -13,14 +13,14 @@ class Api::MovieShowSerializer < Api::BaseSerializer
     :screen_number,
     :price_cents,
     :lat,
-    :long
+    :longitud
   )
 
   def lat
     object.cinema_shows.cinema.lat
   end
 
-  def long
+  def longitud
     object.cinema_shows.cinema.long
   end
 end

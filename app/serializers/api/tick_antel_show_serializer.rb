@@ -9,6 +9,10 @@ class Api::TickAntelShowSerializer < Api::BaseSerializer
     :price_cents,
     :place,
     :lat,
-    :long
+    :longitud
   )
+
+  def longitud
+    object.long
+  end
 end
