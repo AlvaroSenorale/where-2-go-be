@@ -57,7 +57,8 @@ class TickantelScraper
     
     min_price = show_prices(show).min
     max_price = show_prices(show).max
-
+    min_price *= 100 if min_price
+    max_price *= 100 if max_price
     place = get_place(show)
     coord = get_coord(place)
     
